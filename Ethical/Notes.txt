@@ -1,0 +1,46 @@
+Ipv4 2^32 VS IPv6 2^128 - Layer 3 - Routing
+    NAT - network
+
+MAC (Ether/physical)  Layer 2 - Switching
+
+TCP VS UDP
+    TCP - transmission control protocol: FTP,SSH,telnet,SMTP,DNS,HTTP(S)/POP3,SMB,IMAP
+    UDP - User Datagram protocol:  VoIP,DNS,DHCP,TFTP,SNMP
+
+OSI
+
+1)  P - data cables, cat6
+2)  D - switching, MAC
+3)  N - IP addresses, routing
+4)  T - TCP/UDP
+5)  S - session management
+6)  P - "media", jpeg, mov
+7)  A - http, smtp
+
+Sub-Netting
+    Google Sheet: https://docs.google.com/spreadsheets/d/1nQpbttamviHyCodi-nwG9IkCMmQ3P_cVhCe1p9hbv3w/edit?usp=sharing
+
+Python - Maths Order: PEMDAS
+    exponents  - print(5 ** 4)
+    mod - print(50 % 6) = 2
+    0leftover - print(50 // 6) = 8
+    Methods - print(quote.upper()) #.upper method
+        quote="All is well"
+
+       send to office hours if needed
+         I can regrade the HW.
+
+Web/Host:
+    Target Validation: WHOIS, nslookup, dnsrecon
+    Subdomains: Google Fu, dig, Nmap, sublist3r, Bluto, crt.sh, etc
+    Fingerprinting: Nmap, wappalyzer, whatweb, builtwith, netcat
+    Data breaches: HaveIBeenPwnded, Breach-parse, weleakinfo
+
+Vuln Machines:
+    https://drive.google.com/drive/folders/1z923e0icfJADbhgS0Qfaxuez-GJTWvjt
+
+    nitko -h http://<ip>
+
+Non-staged vs Staged Payload:
+    Staged: sends payload in stages, can be less stable - EX. meterpreter/reverse_tcp (multiple directories)
+    Non-staged: sends payload once, larger in size, EX. windows/meterpreter_reverse_tcp

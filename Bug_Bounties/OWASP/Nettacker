@@ -1,0 +1,42 @@
+Nettacker 17/NOV/21 https://github.com/OWASP/nettacker
+
+Scan modules:
+*'admin_scan'*
+*'cms_detection_scan'*
+
+Vuln modules:
+'ssl_certificate_expired_vuln'
+    if cert expired - "abandoned server"
+'x_powered_by_vuln'
+    php/.net framework && verison
+
+Bruteforcing Modules:
+'http_form_brute'
+    UN && PW
+'ssh_brute'
+
+Port scan Module (port_scan):
+    easier & faster than nmap because of .py multi-threading
+        -g for ports E.X. -g 80,443
+
+Running Nettacker:
+nettacker -i <target> -m <module>
+    E.X. nettacker -i 10.0.0.1 -m port_scan
+
+Profiles:
+info, scan, brute, vuln, wp, joomla, all
+
+
+python3 nettacker.py -i <ip> -m port_scan -m subdomain_scan
+python3 nettacker.py -i <ip> -m server_version_vuln,x_powered_by_vul,wappalyzer_scan -s
+    find server/version, what is powering, and wappalyzer vulns.
+
+Parseable DB:
+    Open .html file after scan.
+
+API Key for WEB UI
+    python3 nettacker --start-api (127.0.0.1:5000)
+        In order to login - you need to add API key - to set session
+
+brute-forcing SSH ("-M 50" threads)
+    python3 nettacker.py -m ssh_brute -i <ip> -u admin -p admin -M 50

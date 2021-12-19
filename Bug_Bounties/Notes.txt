@@ -1,0 +1,46 @@
+Google Dorking: https://www.exploit-db.com/google-hacking-database/
+    print site:python.org
+    url:"/course/jumpto.php" site:example.com
+    intitle:"index of" site:example.com
+    link:"https://en.wikipedia.org/wiki/ReDoS"
+    filetype:log site:example.com
+    how to hack * using Google"
+    site:example.com inurl:app/kibana
+    site:example.com ext:php
+    site:example.com ext:log
+
+Public Reverse WHOIS: https://viewdns.info/reversewhois/
+    figure out if a company owns a dedicated IP range,
+        run several IP-to-ASN translations to see if the IP addresses map to a single ASN
+            whois -h whois.cymru.com <ip> (-h retireves info from .cymru. which translates IPS to ASNs)
+
+Certificate Parsing: (Use crt.sh, Censys, and Cert Spotter)
+    Can display other domain names of target
+
+Subdomain enumeration: ( Sublist3r, SubBrute, Amass, and Gobuster, sslscan)
+    AMass uses DNS zone transfers, cert parsing, search engines, and subdomain DBs.
+        Wordlists: https://github.com/danielmiessler/SecLists/
+        Wordlist Gen: https://github.com/assetnote/commonspeak2
+            Remove duplicates from WL's: sort -u wordlist1.txt wordlist2.txt
+        gobuster dns (dns mode for subdomain brute-forcing.
+
+Web/Host:
+    Target Validation: WHOIS, nslookup, dnsrecon
+    Subdomains: Google Fu, dig, Nmap, sublist3r, Bluto, crt.sh, etc
+    Fingerprinting: Nmap, wappalyzer, whatweb, builtwith, netcat
+    Data breaches: HaveIBeenPwnded, Breach-parse
+
+Phone: phonebook.cz
+    breach-parser.sh @telsa.com tesla - UN && PW's
+    hashes.org - breached hashes
+    sublist3r - https://github.com/aboul3la/Sublist3r
+    OWASP - AMASS - https://github.com/OWASP/Amass
+    tomnomnom httpprobe - probe list of domains: https://github.com/tomnomnom/httprobe
+    whatweb - redirects for domains
+
+::Notes::
+Take JS info and parse it
+pip3 env in order install into sandbox
+    look into pip3 global vs local.
+create new user for these search
+Preform passive attacks first

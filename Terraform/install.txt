@@ -1,0 +1,4 @@
+install terraform.op - hashicorp
+    mv terraform /usr/local/bin/.
+    terraform init
+        ../bin/red

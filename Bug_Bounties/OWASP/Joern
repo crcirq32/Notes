@@ -1,0 +1,49 @@
+Joern - 18Nov21 https://www.meetup.com/OWASP-OC/events/281234132/
+  DL Joern: https://github.com/joernio/joern/releases/latest/download/joern-install.sh
+  Vuln App: github.com/ShiftLeftSecurity/tarpit-java
+  Slides: https://drive.google.com/file/d/1MUS3G1FCux-9mhubwlBAa76CDnw2VSjX/view?usp=sharing
+
+URL input and responses
+  int y = x + 50;
+  integer ID9y) equal ID(x)
+  Add Const(50) semicolon
+
+  Lexical analysis
+  syntactic and semantic analysis
+  control flow graph
+  program dependence graph
+
+    $ joern
+    $ importCode.java("/User/$user/Desktop/tarpit-java")
+    $ run.ossdataflow
+    $ save
+
+    $ function call .cpg
+    $ workspace
+        make sure app is imported
+    $ cpg.method.name.l
+        list all methods && list them
+    $ cpg.method.name.l.distinct.sorted
+    $ cpg.method.name(".*Login.*").code.l
+        return methods with Login in name
+    $ cpg.method.name(".*ForwardToLogin.*").code.l
+    $ cpg.method.name(".*ForwardToLogin.*").map (m=> (m.location.filename, m.location.linenumber)).l
+        show line and search term
+    $ cpg.method.name(".*Login.*").code.l
+** finding strings in apps is usually a good place to start looking for vuln.
+    cpg.typ.name("String").localOfType.name.l
+
+Code complexity
+    cpg.method.filter(*****)
+
+    secrets:
+        cpg.literal.code.l
+        cpg.literal.map( m=> (m.code, m.location.filename)).l
+
+        $def source = cpg.call("getParameter")
+            defined function source
+        $def sink = cpg.call("exec|eval")
+            defined function sink
+        $sink.reachableByFlows(source).p
+
+Joern Automation:

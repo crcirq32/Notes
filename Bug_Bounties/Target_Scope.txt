@@ -1,0 +1,10 @@
+Target: Clubhouse ($100-3000) 104.16.0.0 - 104.31.255.255
+    Scope: + Mobile applications
+           + Any assets underneath the following domains:
+           + joinclubhouse.com: 104.18.20.150, 104.18.21.150, 2606:4700::6812:1496, 2606:4700::6812:1596
+                https://centralops.net/co/DomainDossier.aspx?addr=joinclubhouse.com&dom_whois=true&dom_dns=true&traceroute=true&net_whois=true&svc_scan=true
+           + clubhouseapi.com: 104.17.36.19, 104.17.37.19, 2606:4700::6811:2413,2606:4700::6811:2513
+                https://centralops.net/co/DomainDossier.aspx?addr=clubhouseapi.com&dom_whois=true&dom_dns=true&traceroute=true&net_whois=true&svc_scan=true
+           + clubhouse.com 104.18.12.12, 104.18.13.12, 2606:4700::6812:d0c, 2606:4700::6812:c0c
+                https://centralops.net/co/DomainDossier.aspx?addr=clubhouse.com&dom_whois=true&dom_dns=true&traceroute=true&net_whois=true&svc_scan=true
+

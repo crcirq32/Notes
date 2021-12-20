@@ -19,10 +19,12 @@
 **ffuf - No good**
 ---
 **HTML**
-    'http://<ip>
+    '''
+    http://<ip>
     + <body>
     + <!-- Webmaster: alek@blackpearl.tcm -->
-    + <html>'
+    + <html>
+   '''
 ---
 **Gobuster**
 `gobuster dir -u http://<ip> -w /usr/share/wordlists/dirbuster/directory-list-2.3-medium.txt -t 50 --wildcard 2>/dev/null | grep "Status: 200"`

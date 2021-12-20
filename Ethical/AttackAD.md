@@ -22,8 +22,8 @@
 **2. SMB Relay attacks:**
 
 - Requirements: SMB signing must be disabled, relayed user creds must be admin on machine, && network sharing enabled
-- setup ntlmrelay:: \  ![ntlmrelay.py](https://github.com/crcirq32/Notes/blob/main/Ethical/Screenshots/ntlmrelay_py.png)
-  a) Find machines w/ smb enabled: Nessus or Nmap: \
+- setup ntlmrelay::  ![ntlmrelay.py](https://github.com/crcirq32/Notes/blob/main/Ethical/Screenshots/ntlmrelay_py.png)
+- Find machines w/ smb enabled: Nessus or Nmap:
 
 `/opt/impacket/examples/$ python3ntlmrelayx.py -tf targets.txt -smb2support (-i) #python3 -m pip install . ## -i interactive`
 

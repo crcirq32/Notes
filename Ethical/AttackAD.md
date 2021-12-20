@@ -1,19 +1,19 @@
-        ## https://adam-toscher.medium.com/top-five-ways-i-got-domain-admin-on-your-internal-network-before-lunch-2018-edition-82259ab73aaa
-        ## https://github.com/danielmiessler/SecLists/tree/master/Passwords
-        ## https://github.com/SecureAuthCorp/impacket
-        ## https://github.com/dirkjanm/mitm6
+## https://adam-toscher.medium.com/top-five-ways-i-got-domain-admin-on-your-internal-network-before-lunch-2018-edition-82259ab73aaa
+## https://github.com/danielmiessler/SecLists/tree/master/Passwords
+## https://github.com/SecureAuthCorp/impacket
+## https://github.com/dirkjanm/mitm6
 
-1 Netbios && LLMNR Name poisoning 
-2 Relay attacks
-3 MS17-010
-4 kerberoasting
-5 mitm6
+1 Netbios && LLMNR Name poisoning\
+2 Relay attacks\
+3 MS17-010\
+4 kerberoasting\
+5 mitm6\
 
 I LLMNR (link local multicasting name resolution:: basically DNS) Poisoning
-        needs lot of traffic - before nmap/nessus scans
+       + needs lot of traffic - before nmap/nessus scans
     responder: python /usr/share/responder/Responder.py -L eth0 -rdwv
-        try to access attacker IP address. see ![llmnr_poison](E:\Users\Carl\Documents\Notes\Ethical\Screenshots\admin_malz_llmnr_poison.png)
-        hashcat -m 5600 windowshash.txt /usr/share/wordlists/rockyou.txt
+       + try to access attacker IP address. see ![llmnr_poison](E:\Users\Carl\Documents\Notes\Ethical\Screenshots\admin_malz_llmnr_poison.png)
+         +  hashcat -m 5600 windowshash.txt /usr/share/wordlists/rockyou.txt
             ## -m 5600 module for NetNTLMv2
 
 II SMB Relay attacks:

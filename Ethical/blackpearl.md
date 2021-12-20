@@ -1,3 +1,4 @@
+
 **nmap -A -p- 192.168.86.199**
    '''
    PORT   STATE SERVICE VERSION

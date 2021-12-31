@@ -1,9 +1,12 @@
-Box Info
+Box Info Horizontall.htb
 OS: Linux \
 IP: 10.10.11.105 \
 
-Part I Skills learned:: SSH, nginx,
+Part I Skills learned::  
+SSH, nginx, reverse shells \
+CVE-2019-18818, CVE-2019-19609, CVE-2021-3129 
 
+---
 **Enumeration::**
 
 nmap -p- -A -oN Horizontall.txt ${IP} ::
@@ -46,6 +49,7 @@ After running exploit.py, shell becomes broken. see ![broken shell](Screenshots/
    2) `nc -lnvp <lister port> :: $whoami strapi` 
    3) /home/developer/user.txt
 
+---
 Root::
 + netstat shows ports && ips
 + sudo -l nothing, very low permissions.
@@ -64,6 +68,7 @@ curl 127.0.0.1:8000 ::
     + see link laravel_exploit
     exploit: CVE-2021-3129_exploit
 ```
+
 TODO::
 import requests:
 no module requests available 
@@ -71,7 +76,9 @@ no module requests available
 ```
 ```
 
+---
 **References::
 [Discovery_DNS_subdomains_etc](https://github.com/danielmiessler/SecLists)
 [Linpeas.sh](https://github.com/carlospolop/PEASS-ng/releases/tag/refs/pull/252/merge)
 [Lavarel_exploit](https://github.com/nth347/CVE-2021-3129_exploit)
+[walkthrough](https://burakozlu.medium.com/horizontall-walkthrough-htb-250182ab0721)

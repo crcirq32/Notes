@@ -103,7 +103,6 @@ export PATH=/tmp:$PATH
 ```
 ###** 3. Other Escalation techniques::**###
 
-
 Enumeration::
 wfuzz -c -f sub-fighter -w /subdomains-top1million-110000.txt -u 'http://cmess.thm' -H "HOST: FUZZ.cmess.thm"
 

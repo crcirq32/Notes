@@ -2,7 +2,7 @@ PORT      STATE    SERVICE        VERSION
 22/tcp    open     ssh            OpenSSH 7.2p2 Ubuntu 4ubuntu2.8 (Ubuntu Linux; protocol 2.0)
 | ssh-hostkey:
 80/tcp    open     http           Apache httpd 2.4.18 ((Ubuntu))
-|_http-server-header: Apache/2.4.18 (Ubuntu)
+|_http-server-header: Apache/2.4.18 (Ubuntu) Vuln
 |_http-title: Apache2 Ubuntu Default Page: It works
 3022/tcp  filtered csregagent
 4217/tcp  filtered vrml-multi-use

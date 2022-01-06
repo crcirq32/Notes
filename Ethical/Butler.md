@@ -53,7 +53,7 @@ RPC - https://book.hacktricks.xyz/pentesting/135-pentesting-msrpc
 
 impacket -
 
-dir -u http://192.168.86.198:8080 -x php -w /usr/share/wordlists/dirbuster/directory-list-2.3-medium.txt -t 50 --wildcard 2>/dev/null | grep "Status: 200"
+dir -u http://192.168.86.198:8080 -x php -w /usr/share/wordlists/dirbuster/directory-list-2.3-medium.txt -t 50 --wildcard 2>/dev/null | grep "Status: 200
             /login
             /oops - Jenkins 2.289.3
 telnet <ip> 7680

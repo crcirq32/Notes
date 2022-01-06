@@ -68,13 +68,9 @@ curl 127.0.0.1:8000 ::
     + see link laravel_exploit
     exploit: CVE-2021-3129_exploit
 ```
-
 TODO::
 import requests:
 no module requests available 
-
-```
-```
 
 ---
 **References::

@@ -31,7 +31,7 @@
 - Working but keeps failing::  ![revmalz](https://github.com/crcirq32/Notes/blob/main/Ethical/Screenshots/revshell_smb_malz.png)
   &&  ![break](https://github.com/crcirq32/Notes/blob/main/Ethical/Screenshots/malz_smb_breaking.png)
 - shells W/ creds::  ![shells](https://github.com/crcirq32/Notes/blob/main/Ethical/Screenshots/meterpreter_psexec_shells.png) \
-  *wmiexec.py && smbexec.py first! psexec and smb metepreter is very noisy*
+  *wmiexec.py && smbexec.py first! psexec and smb meterpreter is very noisy*
 
 ---
 

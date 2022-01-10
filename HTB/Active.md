@@ -73,7 +73,7 @@ smbclient \\\\Active\\Replication
 </Groups>
 
   smb: prompt off
-  smb: resurse on
+  smb: recurse on
   smb: mget *
 ```
 # gpp-decrypt edBSHOwhZLTjt/QS9FeIcJ83mjWA98gw9guKOhJOdcqh+ZGMeXOsQbCpZ3xUjTLfCuNH8pG5aSVYdYw/NglVmQ :: GPPstillStandingStrong2k18

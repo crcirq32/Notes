@@ -148,6 +148,10 @@ smbshare.py share 'pwd' (share on present working dir)
 +TODO obfuscate payloads
 
 
+
+DOMAIN enumeration::
+https://uci.bootcampcontent.com/UCI-Coding-Bootcamp/uci-irv-virt-cyber-09-2021-u-c/-/blob/master/Lessons/16-Penetration-Testing/1/lessonplan.md#recon-ng-demonstration
+
 ---
 ## **References:**
 ```

@@ -35,3 +35,36 @@ http://exif.regex.info/exif.cgi
 Geolocation::
 GeoGuessr - https://www.geoguessr.com
 GeoGuessr - The Top Tips, Tricks and Techniques - https://somerandomstuff1.wordpress.com/2019/02/08/geoguessr-the-top-tips-tricks-and-techniques/
+
+Emails::
+Hunter.io - https://hunter.io/
+Phonebook.cz - https://phonebook.cz/
+VoilaNorbert - https://www.voilanorbert.com/
+Email Hippo - https://tools.verifyemailaddress.io/
+Email Checker - https://email-checker.net/validate
+Clearbit Connect - https://chrome.google.com/webstore/detail/clearbit-connect-supercha/pmnhcgfcafcnkbengdcanjablaabjplo?hl=en
+
+PW OSINT::
+dehashed.com - may no exist - costs money. 
+hashes.org - lookup for breached hashes
+WeLeakInfo - https://weleakinfo.to/v2/
+LeakCheck - https://leakcheck.io/
+SnusBase - https://snusbase.com/
+Scylla.sh - https://scylla.sh/
+HaveIBeenPwned - https://haveibeenpwned.com/
+
+Usernames:
+NameChk - https://namechk.com/
+WhatsMyName - https://whatsmyname.app/
+NameCheckup - https://namecheckup.com/
+
+searching for people::
+WhitePages - https://www.whitepages.com/
+TruePeopleSearch - https://www.truepeoplesearch.com/
+FastPeopleSearch - https://www.fastpeoplesearch.com/
+FastBackgroundCheck - https://www.fastbackgroundcheck.com/
+WebMii - https://webmii.com/
+PeekYou - https://peekyou.com/
+411 - https://www.411.com/
+Spokeo - https://www.spokeo.com/
+That'sThem - https://thatsthem.com/

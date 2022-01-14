@@ -26,13 +26,14 @@ Yields
 ### Burp suite
 + ${IP}/log_submit.php
 + dummy test packet
-    + Data needs to be *URL then Base64 decoded*
+    + Data needs to be ***URL
+    + then Base64 decoded***
     + Find template https://github.com/payloadbox
     + adjust titles to mimic db.php titles
-    + payload needs to be *Base64 then url encoded*
+    + payload needs to be ***Base64 then url encoded***
 + Send payload via Burp/Repeater.
 
-#### db.php payload:
+#### db.php payload: see ![](Screenshots/bountyhunter_xml_encoded_request.png)
 <?xml version="1.0" encoding="ISO-8859-1"?>
     <bugreport>
     <title>test</title>

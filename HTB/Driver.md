@@ -75,9 +75,17 @@ Command=ToggleDesktop
 
 + rpcdump.py 10.10.11.106 -p 135 :: provides multiple vuln services in hacktricks                                                      1 ⨯
 
++ msfconsole> use auxiliary/scanner/winrm/winrm_cmd see [winRM_cmd](Screenshots/driver_winrm_cmd.png))
+  + set cmd pwd :: C:\Users\tony\Documents
+  + set cmd "cd ..\Desktop\ ; dir ; more user.txt" ![pwd_enum](Screenshots/driver_pwd_enum.png)
+
+
 +TODO: impacket.dcerpc.v5.rprn.DCERPCSessionError: RPRN SessionError: code: 0x3a - ERROR_BAD_NET_RESP - The specified server cannot perform the requested operation.
 Can't run printernightmare CVE-2021-1675
-
+CVE-2021-1675 not working - see ![hmmmm](Screenshots/CVE20211675_no_workie.png)
+    + https://github.com/cube0x0/CVE-2021-1675
+    + contact JHommaonddily
+    + TODO: send to github
 [](https://github.com/cube0x0/CVE-2021-1675)
 [](https://book.hacktricks.xyz/pentesting/135-pentesting-msrpc)
 [scf_file_attacks](https://pentestlab.blog/2017/12/13/smb-share-scf-file-attacks/)

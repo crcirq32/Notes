@@ -6,7 +6,7 @@ nmap -A -T4 10.10.11.136
 |   256 b1:41:77:99:46:9a:6c:5d:d2:98:2f:c0:32:9a:ce:03 (ECDSA)
 |_  256 e7:36:43:3b:a9:47:8a:19:01:58:b2:bc:89:f6:51:08 (ED25519)
 80/tcp open  http    Apache httpd 2.4.41 ((Ubuntu))
-|_http-title: Play | Landing
+|_http-title: Play | Landin
 |_http-server-header: Apache/2.4.41 (Ubuntu)
 Service Info: OS: Linux; CPE: cpe:/o:linux:linux_kernel
 

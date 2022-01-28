@@ -84,8 +84,7 @@ Command=ToggleDesktop
 Can't run printernightmare CVE-2021-1675
 CVE-2021-1675 not working - see ![hmmmm](Screenshots/CVE20211675_no_workie.png)
     + https://github.com/cube0x0/CVE-2021-1675
-    + contact JHommaonddily
-    + TODO: send to github
+
 [](https://github.com/cube0x0/CVE-2021-1675)
 [](https://book.hacktricks.xyz/pentesting/135-pentesting-msrpc)
 [scf_file_attacks](https://pentestlab.blog/2017/12/13/smb-share-scf-file-attacks/)

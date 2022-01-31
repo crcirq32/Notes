@@ -113,7 +113,7 @@ See ![200_ssh_key](Screenshots/200_add_ssh_key.png)
 
 Key should be present now ssh into dasith! See ![ssh_dasith](Screenshots/ssh_dasith.png)
 
-SPOILER:: key :: f49628ceda5c0f784c6ae947154b764b
+user:: f49628ceda5c0f784c6ae947154b764b
 
 ##**Root::**##
     + /opt has count with SUID
@@ -131,7 +131,7 @@ fg ::
 + crash reports are in `/var/crash` && can be unpacked with `apport-unpack` w/ `apport-unpack /var/crash/_opt_count.1000.crash /tmp/crash-report`
 + binary files vim Coredump.
 + line 1482&1483 have flag:: See ![root_flag](Screenshots/secret_rootflag.png)
-SPOILER :: Root :: e5bf603c4904fb6885014ad9cfc337ec
+Root :: e5bf603c4904fb6885014ad9cfc337ec
 
 TODO: Read more about valgrind, apport-unpack
 
@@ -148,3 +148,4 @@ the RFC822 syntax.
 [valgrind](https://www.man7.org/linux/man-pages/man1/valgrind.1.html)
 [sig_vs_bus](https://www.geeksforgeeks.org/segmentation-fault-sigsegv-vs-bus-error-sigbus/)
 [apport](https://wiki.ubuntu.com/Apport)
+[seclist](https://github.com/danielmiessler/SecLists/blob/master/Discovery/DNS/subdomains-top1million-110000.txt)

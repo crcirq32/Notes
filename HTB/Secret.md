@@ -8,7 +8,7 @@ AppSec, JS \
 ---
 **Enumeration::**
 
-nmap -p- -A -oN secretports.txt ${IP} ::
+nmap -p- -A -oN secetports.txt ${IP} ::
 ```
 22/tcp   open  ssh     OpenSSH 8.2p1 Ubuntu 4ubuntu0.3 (Ubuntu Linux; protocol 2.0)
 80/tcp   open  http    nginx 1.18.0 (Ubuntu)

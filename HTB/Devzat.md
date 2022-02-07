@@ -127,6 +127,13 @@ patrick@devzat:~$ curl -vvv 127.0.0.1:8086
   < Date: Wed, 02 Feb 2022 19:57:43 GMT
   < Content-Length: 19
 
+/usr/bin/gettext.sh                                                                                               
+/usr/bin/dockerd-rootless.sh
+/usr/bin/rescan-scsi-bus.sh
+/usr/bin/dockerd-rootless-setuptool.sh
+
+
+
 ##**Attempts::**##
 + pwnkit - no
 + GTFObins - docker no, 
@@ -142,6 +149,10 @@ https://unit42.paloaltonetworks.com/breaking-docker-via-runc-explaining-cve-2019
 
 Font Awesome Free 5.9.0 by @fontawesome - https://fontawesome.com
 html5up.net 
+
+
+TODO: chisel requires glibc-2.3.2 
++ unable to configure ^^ because of bad gcc && make
 
 ##**References::**##
 [git-dumper](https://github.com/arthaud/git-dumper)
